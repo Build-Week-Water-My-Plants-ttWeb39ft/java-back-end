@@ -106,9 +106,7 @@ public class UseremailServiceImpl
 
     @Transactional
     @Override
-    public Useremail save(
-        long userid,
-        String emailaddress)
+    public Useremail save(Useremail useremail, userid)
     {
         User currentUser = userService.findUserById(userid);
 

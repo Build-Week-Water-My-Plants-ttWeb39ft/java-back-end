@@ -47,12 +47,6 @@ public interface UseremailService
 
     /**
      * Add a new User Email combination
-     *
-     * @param userid       the userid of the new user email combination
-     * @param emailaddress the email address of the new user email combination
-     * @return the new user email combination
      */
-    Useremail save(
-        long userid,
-        String emailaddress);
+    Useremail save(Useremail useremail);
 }
