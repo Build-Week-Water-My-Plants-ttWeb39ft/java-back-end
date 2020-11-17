@@ -1,15 +1,18 @@
 package com.lambdaschool.foundation.controllers;
 
 import com.lambdaschool.foundation.models.Useremail;
+import com.lambdaschool.foundation.services.UserService;
 import com.lambdaschool.foundation.services.UseremailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -26,6 +29,9 @@ public class UseremailController
      */
     @Autowired
     UseremailService useremailService;
+
+    @Autowired
+    UserService userService;
 
     /**
      * List of all users emails
@@ -107,22 +113,21 @@ public class UseremailController
      * @throws URISyntaxException Exception if something does not work in creating the location header
      * @see UseremailService#save(long, String) UseremailService.save(long, String)
      */
-    @PostMapping(value = "/user/{userid}/email/{emailaddress}")
+    @PostMapping(value = "/useremail", consumes = "application/json")
     public ResponseEntity<?> addNewUserEmail(
-        @PathVariable
-            long userid,
-        @PathVariable
-            String emailaddress) throws
+            @Valid
+            @RequestBody Useremail newEmail, Authentication authentication) throws
                                  URISyntaxException
     {
-        Useremail newUserEmail = useremailService.save(userid,
-            emailaddress);
+        currentUser = userService.findByName(authentication.getName());
+        newEmail.setUseremailid(0);
+        newEmail = useremailService.save(newEmail);
 
         // set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newUserEmailURI = ServletUriComponentsBuilder.fromCurrentServletMapping()
-            .path("/useremails/useremail/{useremailid}")
-            .buildAndExpand(newUserEmail.getUseremailid())
+            .path("/{useremailid}")
+            .buildAndExpand(newEmail.getUseremailid())
             .toUri();
         responseHeaders.setLocation(newUserEmailURI);
 

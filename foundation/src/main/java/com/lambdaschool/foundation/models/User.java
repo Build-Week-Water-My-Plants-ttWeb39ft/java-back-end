@@ -52,6 +52,24 @@ public class User
     private String primaryemail;
 
     /**
+     * first name of user, cannot be null
+     */
+
+
+    private String firstName;
+
+    /**
+     * last name of user, cannot be null
+     */
+
+    private String lastName;
+
+    /**
+     * phone number of user, cannot be null
+     */
+    private String phone;
+
+    /**
      * A list of emails for this user
      */
     @OneToMany(mappedBy = "user",
@@ -59,7 +77,7 @@ public class User
         orphanRemoval = true)
     @JsonIgnoreProperties(value = "user",
         allowSetters = true)
-    private List<Useremail> useremails = new ArrayList<>();
+    private List<Plants> plants = new ArrayList<>();
 
     /**
      * Part of the join relationship between user and role
@@ -87,82 +105,72 @@ public class User
      * @param username     The username (String) of the user
      * @param password     The password (String) of the user
      * @param primaryemail The primary email (String) of the user
+     * @param firstName The first name (String) of the user
+     * @param lastName The last name (String) of the user
+     * @param phone The phone number (String) of the user
      */
-    public User(
-        String username,
-        String password,
-        String primaryemail)
-    {
-        setUsername(username);
-        setPassword(password);
+
+    public User(@NotNull String username, @NotNull String password, @NotNull @Email String primaryemail, String firstName, String lastName, String phone) {
+        this.username = username;
+        this.password = password;
         this.primaryemail = primaryemail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
     }
 
     /**
-     * Getter for userid
-     *
-     * @return the userid (long) of the user
+     * Getters and Setters
      */
-    public long getUserid()
-    {
+
+    public long getUserid() {
         return userid;
     }
 
-    /**
-     * Setter for userid. Used primary for seeding data
-     *
-     * @param userid the new userid (long) of the user
-     */
-    public void setUserid(long userid)
-    {
+    public void setUserid(long userid) {
         this.userid = userid;
     }
 
-    /**
-     * Getter for username
-     *
-     * @return the username (String) lowercase
-     */
-    public String getUsername()
-    {
+    public String getUsername() {
         return username;
     }
 
-    /**
-     * setter for username
-     *
-     * @param username the new username (String) converted to lowercase
-     */
-    public void setUsername(String username)
-    {
-        this.username = username.toLowerCase();
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    /**
-     * getter for primary email
-     *
-     * @return the primary email (String) for the user converted to lowercase
-     */
-    public String getPrimaryemail()
-    {
+    public String getPrimaryemail() {
         return primaryemail;
     }
 
-    /**
-     * setter for primary email
-     *
-     * @param primaryemail the new primary email (String) for the user converted to lowercase
-     */
-    public void setPrimaryemail(String primaryemail)
-    {
-        this.primaryemail = primaryemail.toLowerCase();
+    public void setPrimaryemail(String primaryemail) {
+        this.primaryemail = primaryemail;
     }
 
-    /**
-     * Getter for the password
-     *
-     * @return the password (String) of the user
-     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getPassword()
     {
         return password;
@@ -187,41 +195,21 @@ public class User
         this.password = passwordEncoder.encode(password);
     }
 
-    /**
-     * Getter for the list of useremails for this user
-     *
-     * @return the list of useremails (List(Useremail)) for this user
-     */
-    public List<Useremail> getUseremails()
+    public List<Plants> getPlants()
     {
-        return useremails;
+        return plants;
     }
 
-    /**
-     * Setter for list of useremails for this user
-     *
-     * @param useremails the new list of useremails (List(Useremail)) for this user
-     */
-    public void setUseremails(List<Useremail> useremails)
+    public void setPlants(List<Plants> plants)
     {
-        this.useremails = useremails;
+        this.plants = plants;
     }
 
-    /**
-     * Getter for user role combinations
-     *
-     * @return A list of user role combinations associated with this user
-     */
     public Set<UserRoles> getRoles()
     {
         return roles;
     }
 
-    /**
-     * Setter for user role combinations
-     *
-     * @param roles Change the list of user role combinations associated with this user to this one
-     */
     public void setRoles(Set<UserRoles> roles)
     {
         this.roles = roles;

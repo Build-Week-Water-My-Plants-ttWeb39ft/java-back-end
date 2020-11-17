@@ -34,7 +34,7 @@ public class User
     private String username;
 
     /**
-     * A list of emails for this user
+     * A list of plants for this user
      */
     @OneToMany(mappedBy = "user",
         cascade = CascadeType.ALL,
