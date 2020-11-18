@@ -1,6 +1,7 @@
 package com.lambdaschool.foundation.controllers;
 
 import com.lambdaschool.foundation.models.Plants;
+import com.lambdaschool.foundation.models.User;
 import com.lambdaschool.foundation.services.UserService;
 import com.lambdaschool.foundation.services.PlantsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,20 +92,19 @@ public class PlantsController
      * Adds a new plant to user
      */
     @PostMapping(value = "/plant", consumes = "application/json")
-    public ResponseEntity<?> addNewUserEmail(
-            @Valid
-            @RequestBody Plants newplant, Authentication authentication) throws
-                                 URISyntaxException
-    {
-        currentUser = userService.findByName(authentication.getName());
-        newplant.setPlantid(0);
-        newplant = plantsService.save(newplant);
+    public ResponseEntity<?> addNewUserEmail(@Valid @RequestBody Plants newPlant, Authentication authentication)
+            throws URISyntaxException {
+
+        User currentUser = userService.findByName(authentication.getName());
+        newPlant.setPlantid(0);
+        currentUser.getPlants().add(newPlant);
+        newPlant = plantsService.save(newPlant);
 
         // set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();
         URI newPlantURI = ServletUriComponentsBuilder.fromCurrentServletMapping()
             .path("/{plantid}")
-            .buildAndExpand(newplant.getPlantid())
+            .buildAndExpand(newPlant.getPlantid())
             .toUri();
         responseHeaders.setLocation(newPlantURI);
 

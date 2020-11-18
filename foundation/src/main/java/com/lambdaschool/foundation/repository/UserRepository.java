@@ -10,4 +10,9 @@ import java.util.List;
  */
 public interface UserRepository
     extends CrudRepository<User, Long> {
+
+    /**
+     * Find a user based off over username
+     */
+    User findByUsername(String username);
 }

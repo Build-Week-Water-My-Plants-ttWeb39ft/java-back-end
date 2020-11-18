@@ -1,12 +1,20 @@
 package com.lambdaschool.oktafoundation;
 
+import com.github.javafaker.Faker;
+import com.github.javafaker.service.FakeValuesService;
+import com.github.javafaker.service.RandomService;
 import com.lambdaschool.oktafoundation.models.Role;
+import com.lambdaschool.oktafoundation.models.User;
+import com.lambdaschool.oktafoundation.models.UserRoles;
+import com.lambdaschool.oktafoundation.models.Useremail;
 import com.lambdaschool.oktafoundation.services.RoleService;
 import com.lambdaschool.oktafoundation.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Locale;
 
 /**
  * SeedData puts both known and random data into the database. It implements CommandLineRunner.
@@ -17,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Component
 public class SeedData
-    implements CommandLineRunner
+        implements CommandLineRunner
 {
     /**
      * Connects the Role Service to this process
@@ -43,8 +51,9 @@ public class SeedData
     @Transactional
     @Override
     public void run(String[] args) throws
-                                   Exception
+            Exception
     {
+        userService.deleteAll();
         roleService.deleteAll();
         Role r1 = new Role("admin");
         Role r2 = new Role("user");
@@ -54,29 +63,92 @@ public class SeedData
         r2 = roleService.save(r2);
         r3 = roleService.save(r3);
 
-        // The following is an example user!
-        /*
         // admin, data, user
-        User u1 = new User("admin",
-            "password",
-            "admin@lambdaschool.local");
+        User u1 = new User("admin");
         u1.getRoles()
-            .add(new UserRoles(u1,
-                r1));
+                .add(new UserRoles(u1,
+                        r1));
         u1.getRoles()
-            .add(new UserRoles(u1,
-                r2));
+                .add(new UserRoles(u1,
+                        r2));
         u1.getRoles()
-            .add(new UserRoles(u1,
-                r3));
+                .add(new UserRoles(u1,
+                        r3));
         u1.getUseremails()
-            .add(new Useremail(u1,
-                "admin@email.local"));
+                .add(new Useremail(u1,
+                        "admin@email.local"));
         u1.getUseremails()
-            .add(new Useremail(u1,
-                "admin@mymail.local"));
+                .add(new Useremail(u1,
+                        "admin@mymail.local"));
 
         userService.save(u1);
-        */
+
+        // data, user
+        User u2 = new User("cinnamon");
+        u2.getRoles()
+                .add(new UserRoles(u2,
+                        r2));
+        u2.getRoles()
+                .add(new UserRoles(u2,
+                        r3));
+        u2.getUseremails()
+                .add(new Useremail(u2,
+                        "cinnamon@mymail.local"));
+        u2.getUseremails()
+                .add(new Useremail(u2,
+                        "hops@mymail.local"));
+        u2.getUseremails()
+                .add(new Useremail(u2,
+                        "bunny@email.local"));
+        userService.save(u2);
+
+        // user
+        User u3 = new User("barnbarn");
+        u3.getRoles()
+                .add(new UserRoles(u3,
+                        r2));
+        u3.getUseremails()
+                .add(new Useremail(u3,
+                        "barnbarn@email.local"));
+        userService.save(u3);
+
+        User u4 = new User("puttat");
+        u4.getRoles()
+                .add(new UserRoles(u4,
+                        r2));
+        userService.save(u4);
+
+        User u5 = new User("misskitty");
+        u5.getRoles()
+                .add(new UserRoles(u5,
+                        r2));
+        userService.save(u5);
+
+        if (false)
+        {
+            // using JavaFaker create a bunch of regular users
+            // https://www.baeldung.com/java-faker
+            // https://www.baeldung.com/regular-expressions-java
+
+            FakeValuesService fakeValuesService = new FakeValuesService(new Locale("en-US"),
+                    new RandomService());
+            Faker nameFaker = new Faker(new Locale("en-US"));
+
+            for (int i = 0; i < 25; i++)
+            {
+                new User();
+                User fakeUser;
+
+                fakeUser = new User(nameFaker.name()
+                        .username());
+                fakeUser.getRoles()
+                        .add(new UserRoles(fakeUser,
+                                r2));
+                fakeUser.getUseremails()
+                        .add(new Useremail(fakeUser,
+                                fakeValuesService.bothify("????##@gmail.com")));
+                userService.save(fakeUser);
+            }
+        }
     }
 }
