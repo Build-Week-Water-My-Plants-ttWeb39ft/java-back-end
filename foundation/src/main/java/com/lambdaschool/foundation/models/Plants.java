@@ -42,10 +42,9 @@ public class Plants
     private String frequency;
 
     /**
-     * The days of which watering is required "Monday - Sunday" (String) of the plant. Cannot be null.
+     * The days of which watering is required "Monday - Sunday" (String) of the plant. Can be null if watering is set to daily.
      */
 
-    @NotNull
     private String days;
 
     /**
@@ -55,10 +54,9 @@ public class Plants
     private String image;
 
     /**
-     * Description of plant Cannot be null.
+     * Description of plant Can be null.
      */
 
-    @NotNull
     private String description;
 
     /**
@@ -110,7 +108,7 @@ public class Plants
      * @param user The user to which the plants belong (User)
      */
 
-    public Plants(@NotNull String nickname, @NotNull String species, @NotNull String frequency, @NotNull String days, String image, @NotNull String description, String datePlanted, String careInstructions, @NotNull User user) {
+    public Plants(@NotNull String nickname, @NotNull String species, @NotNull String frequency, String days, String image, String description, String datePlanted, String careInstructions, @NotNull User user) {
         this.nickname = nickname;
         this.species = species;
         this.frequency = frequency;
