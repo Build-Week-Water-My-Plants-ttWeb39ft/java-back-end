@@ -15,6 +15,8 @@ For an example of accessing this application with a JavaScript Front End see the
 
 ### USERS
 
+**All end-points begin with /users except login, getuserinfo, and createnew user**
+
 Users need to register and login to get access to their plant interface.
 
 * /api/createnewuser (POST)
@@ -81,6 +83,8 @@ Users need to register and login to get access to their plant interface.
     
 
 ### Plants
+
+**all end-points begin with /plants
 
 All the plants end points require a token to get access.
 
