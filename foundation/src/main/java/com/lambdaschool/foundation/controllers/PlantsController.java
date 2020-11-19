@@ -51,7 +51,7 @@ public class PlantsController
      * Return the plant based on ID
      */
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
-    @GetMapping(value = "/plants/{plantid}",
+    @GetMapping(value = "/plant/{plantid}",
         produces = "application/json")
     public ResponseEntity<?> getPlantById(
         @PathVariable
@@ -65,7 +65,7 @@ public class PlantsController
     /**
      * Removes the given plant based on id
      */
-    @DeleteMapping(value = "/plants/{plantid}")
+    @DeleteMapping(value = "/plant/{plantid}")
     public ResponseEntity<?> deletePlantById(
         @PathVariable
             long plantid)
@@ -77,7 +77,7 @@ public class PlantsController
     /**
      * Change the plant based of the request body and id given
      */
-    @PutMapping("/plants/{plantid}")
+    @PutMapping("/plant/{plantid}")
     public ResponseEntity<?> updatePlant(
             @RequestBody
             Plants updatedplant,
