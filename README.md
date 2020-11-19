@@ -84,7 +84,7 @@ Users need to register and login to get access to their plant interface.
 
 ### Plants
 
-**all end-points begin with /plants
+**all end-points begin with /plants**
 
 All the plants end points require a token to get access.
 
