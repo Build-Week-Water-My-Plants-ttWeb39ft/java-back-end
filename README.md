@@ -8,7 +8,7 @@ For an example of accessing this application with a JavaScript Front End see the
 
 ## Basic Data Structure
 
-
+https://github.com/Build-Week-Water-My-Plants-ttWeb39ft/java-back-end/blob/master/java-back-end-data-flow.png
 
 ## End-points:
 
