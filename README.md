@@ -16,8 +16,6 @@ https://github.com/Build-Week-Water-My-Plants-ttWeb39ft/java-back-end/blob/maste
 
 ### USERS
 
-**All end-points begin with /users except login, getuserinfo, and createnew user**
-
 Users need to register and login to get access to their plant interface.
 
 * /api/createnewuser (POST)
@@ -49,14 +47,14 @@ Users need to register and login to get access to their plant interface.
     ```
     API returns a token as well as the user's id.
 
-* /api/users (GET)
+* /api/users/users (GET)
 
     Return a list of users.
 
     User needs to be an admin and logged in.
     
     
-* /api/users/:id (GET)
+* /api/users/user/:id (GET)
 
     Get the user info with certain id.
 
@@ -65,14 +63,14 @@ Users need to register and login to get access to their plant interface.
     **Able to access individual user's plant collection through this end-point**
     
     
- * /api/users/:id (PUT)
+ * /api/users/user/:id (PUT)
 
     update the user info with certain id.
 
     User needs to be logged in.
     
 
-* /api/users/:id (DELETE)
+* /api/users/user/:id (DELETE)
 
     Delete the user with certain id.
 
@@ -85,25 +83,23 @@ Users need to register and login to get access to their plant interface.
 
 ### Plants
 
-**all end-points begin with /plants**
-
 All the plants end points require a token to get access.
 
-* /api/plants (GET)
+* /api/plants/plants (GET)
 
     Returns a list of all plants in database
     
     User needs to be an admin and logged in.
     
     
-* api/plant/:id (GET / PUT / DELETE)
+* api/plants/plant/:id (GET / PUT / DELETE)
 
     get update or delete a task with task id.
     
     User needs to be logged in
     
 
-* api/plants (POST)
+* api/plants/plants (POST)
 
     add a new plant
 
