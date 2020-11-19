@@ -52,25 +52,25 @@ public class User
     private String primaryemail;
 
     /**
-     * first name of user, cannot be null
+     * first name of user, can be null
      */
 
 
     private String firstName;
 
     /**
-     * last name of user, cannot be null
+     * last name of user, can be null
      */
 
     private String lastName;
 
     /**
-     * phone number of user, cannot be null
+     * phone number of user, can be null
      */
     private String phone;
 
     /**
-     * A list of emails for this user
+     * A list of plants for this user
      */
     @OneToMany(mappedBy = "user",
         cascade = CascadeType.ALL,

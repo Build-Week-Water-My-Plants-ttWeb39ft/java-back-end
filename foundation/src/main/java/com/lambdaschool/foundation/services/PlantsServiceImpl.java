@@ -140,6 +140,7 @@ public class PlantsServiceImpl implements PlantsService
         newPlant.setCareInstructions(plants.getCareInstructions());
         newPlant.setUser(plants.getUser());
 
+
         return plantsRepository.save(newPlant);
     }
 
