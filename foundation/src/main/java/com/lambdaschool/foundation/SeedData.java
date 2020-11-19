@@ -77,8 +77,8 @@ public class SeedData
             .add(new UserRoles(u1,
                 r2));
         u1 = userService.save(u1);
-        Plants p1 = new Plants("Test plant", "Unknown", "Monthly", "M W F", "image goes here", "this plant isn't real", "11/17/2020", "I am the boss", u1);
-        Plants p2 = new Plants("Another Test plant", "Unknown", "Monthly", "M W F", "image goes here", "this plant isn't real", "11/17/2020", "I am the boss", u1);
+        Plants p1 = new Plants("Test plant", "Unknown", "Monthly", "Monday,Wednesday,Friday", "image goes here", "this plant isn't real", "2020/11/16", "I am the boss", u1);
+        Plants p2 = new Plants("Another Test plant", "Unknown", "Biweekly", "Tuesday,Thursday", "image goes here", "this plant isn't real", "2020/11/16", "Put me in the sun", u1);
         //u1.getPlants().add(p1);
 
 
@@ -96,9 +96,9 @@ public class SeedData
 
         u2 = userService.save(u2);
 
-        Plants p3 = new Plants("My First Plant", "Ficus", "biweekly", "Thursdays", "image goes here", "My first plant", "11/17/2020", "put me in the sun", u2);
-        Plants p4 = new Plants("Worst Christmas Present", "No Idea What it is", "Daily", "Everyday", "image goes here", "Christmas present 2019", "11/17/2020", "Over water me till I die", u2 );
-        Plants p5 = new Plants("My Favorite Plant", "Pine Tree", "Monthly", "Friday", "image goes here", "I have had this plant since I was a child", "01/24/02", "Handle with care", u2 );
+        Plants p3 = new Plants("My First Plant", "Ficus", "biweekly", "Thursdays", "image goes here", "My first plant", "2020/11/16", "put me in the sun", u2);
+        Plants p4 = new Plants("Worst Christmas Present", "No Idea What it is", "Daily", "Everyday", "image goes here", "Christmas present 2019", "2020/11/16", "Over water me till I die", u2 );
+        Plants p5 = new Plants("My Favorite Plant", "Pine Tree", "Monthly", "Friday", "image goes here", "I have had this plant since I was a child", "2002/01/24", "Handle with care", u2 );
 
         plantsService.save(p3);
         plantsService.save(p4);
