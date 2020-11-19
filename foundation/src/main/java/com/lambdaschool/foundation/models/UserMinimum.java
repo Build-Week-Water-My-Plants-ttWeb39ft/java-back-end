@@ -25,63 +25,77 @@ public class UserMinimum
     private String primaryemail;
 
     /**
-     * Getter for the username
-     *
-     * @return the username (String) associated with this user
+     * The user's first name (String)
      */
+    private String firstName;
+
+
+    /**
+     * The user's last name (String)
+     */
+    private String lastName;
+
+
+    /**
+     * The user's phone number (String)
+     */
+    private String phone;
+
+    /**
+     * Getters and Setters
+     */
+
     public String getUsername()
     {
         return username;
     }
 
-    /**
-     * Setter for the username
-     *
-     * @param username the new username (String) associated with this user
-     */
     public void setUsername(String username)
     {
         this.username = username;
     }
 
-    /**
-     * Getter for the password of this user
-     *
-     * @return the password (String) for this user
-     */
     public String getPassword()
     {
         return password;
     }
 
-    /**
-     * Setter for the password of this user. This object is a temporary model used to create a new user.
-     * The password must remain in clear text until saved into the database.
-     *
-     * @param password the new password (String in clear texts) for this user
-     */
     public void setPassword(String password)
     {
         this.password = password;
     }
 
-    /**
-     * Getter for email for this user
-     *
-     * @return the email address (String) for this user
-     */
     public String getPrimaryemail()
     {
         return primaryemail;
     }
 
-    /**
-     * Setter for email for this user
-     *
-     * @param primaryemail the new email address (String) for this user.
-     */
     public void setPrimaryemail(String primaryemail)
     {
         this.primaryemail = primaryemail;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

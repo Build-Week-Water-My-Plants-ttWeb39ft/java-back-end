@@ -7,6 +7,7 @@ import com.lambdaschool.foundation.models.Plants;
 import com.lambdaschool.foundation.models.Role;
 import com.lambdaschool.foundation.models.User;
 import com.lambdaschool.foundation.models.UserRoles;
+import com.lambdaschool.foundation.services.PlantsService;
 import com.lambdaschool.foundation.services.RoleService;
 import com.lambdaschool.foundation.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,9 @@ public class SeedData
      */
     @Autowired
     UserService userService;
+
+    @Autowired
+    PlantsService plantsService;
 
     /**
      * Generates test, seed data for our application
@@ -72,10 +76,14 @@ public class SeedData
         u1.getRoles()
             .add(new UserRoles(u1,
                 r2));
-        u1.getPlants()
-            .add(new Plants("Test plant", "Unknown", "Monthly", "M W F", "image goes here", "this plant isn't real", "11/17/2020", "I am the boss", u1));
+        u1 = userService.save(u1);
+        Plants p1 = new Plants("Test plant", "Unknown", "Monthly", "M W F", "image goes here", "this plant isn't real", "11/17/2020", "I am the boss", u1);
+        Plants p2 = new Plants("Another Test plant", "Unknown", "Monthly", "M W F", "image goes here", "this plant isn't real", "11/17/2020", "I am the boss", u1);
+        //u1.getPlants().add(p1);
 
-        userService.save(u1);
+
+        plantsService.save(p1);
+        plantsService.save(p2);
 
         // user
 
@@ -85,13 +93,17 @@ public class SeedData
         u2.getRoles()
             .add(new UserRoles(u2,
                 r2));
-        u2.getPlants()
-            .add(new Plants("My First Plant", "Ficus", "biweekly", "Thursdays", "image goes here", "My first plant", "11/17/2020", "put me in the sun", u2));
-        u2.getPlants()
-            .add(new Plants("Worst Christmas Present", "No Idea What it is", "Daily", "Everyday", "image goes here", "Christmas present 2019", "11/17/2020", "Over water me till I die", u2 ));
-        u2.getPlants()
-            .add(new Plants("My Favorite Plant", "Pine Tree", "Monthly", "Friday", "image goes here", "I have had this plant since I was a child", "01/24/02", "Handle with care", u2 ));
-        userService.save(u2);
+
+        u2 = userService.save(u2);
+
+        Plants p3 = new Plants("My First Plant", "Ficus", "biweekly", "Thursdays", "image goes here", "My first plant", "11/17/2020", "put me in the sun", u2);
+        Plants p4 = new Plants("Worst Christmas Present", "No Idea What it is", "Daily", "Everyday", "image goes here", "Christmas present 2019", "11/17/2020", "Over water me till I die", u2 );
+        Plants p5 = new Plants("My Favorite Plant", "Pine Tree", "Monthly", "Friday", "image goes here", "I have had this plant since I was a child", "01/24/02", "Handle with care", u2 );
+
+        plantsService.save(p3);
+        plantsService.save(p4);
+        plantsService.save(p5);
+
 
 
 //        if (false)

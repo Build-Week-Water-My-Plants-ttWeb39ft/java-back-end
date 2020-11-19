@@ -203,5 +203,21 @@ public class Plants
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Plants{" +
+                "plantid=" + plantid +
+                ", nickname='" + nickname + '\'' +
+                ", species='" + species + '\'' +
+                ", frequency='" + frequency + '\'' +
+                ", days='" + days + '\'' +
+                ", image='" + image + '\'' +
+                ", description='" + description + '\'' +
+                ", datePlanted='" + datePlanted + '\'' +
+                ", careInstructions='" + careInstructions + '\'' +
+                ", user=" + user +
+                '}';
+    }
 }
 

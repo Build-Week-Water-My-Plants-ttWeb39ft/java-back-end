@@ -49,7 +49,6 @@ public class UserController
     /**
      * Returns a single user based off a user id number
      */
-    @PreAuthorize("hasAnyRole('ADMIN')")
     @GetMapping(value = "/user/{userId}",
         produces = "application/json")
     public ResponseEntity<?> getUserById(
@@ -61,33 +60,33 @@ public class UserController
             HttpStatus.OK);
     }
 
-    /**
-     * Given a complete User Object, create a new User record and accompanying plant records
-     * and user role records.
-     */
-    @PostMapping(value = "/user",
-        consumes = "application/json")
-    public ResponseEntity<?> addNewUser(
-        @Valid
-        @RequestBody
-            User newuser) throws
-                          URISyntaxException
-    {
-        newuser.setUserid(0);
-        newuser = userService.save(newuser);
-
-        // set the location header for the newly created resource
-        HttpHeaders responseHeaders = new HttpHeaders();
-        URI newUserURI = ServletUriComponentsBuilder.fromCurrentRequest()
-            .path("/{userid}")
-            .buildAndExpand(newuser.getUserid())
-            .toUri();
-        responseHeaders.setLocation(newUserURI);
-
-        return new ResponseEntity<>(null,
-            responseHeaders,
-            HttpStatus.CREATED);
-    }
+//    /**
+//     * Given a complete User Object, create a new User record and accompanying plant records
+//     * and user role records.
+//     */
+//    @PostMapping(value = "/user",
+//        consumes = "application/json")
+//    public ResponseEntity<?> addNewUser(
+//        @Valid
+//        @RequestBody
+//            User newuser) throws
+//                          URISyntaxException
+//    {
+//        newuser.setUserid(0);
+//        newuser = userService.save(newuser);
+//
+//        // set the location header for the newly created resource
+//        HttpHeaders responseHeaders = new HttpHeaders();
+//        URI newUserURI = ServletUriComponentsBuilder.fromCurrentRequest()
+//            .path("/{userid}")
+//            .buildAndExpand(newuser.getUserid())
+//            .toUri();
+//        responseHeaders.setLocation(newUserURI);
+//
+//        return new ResponseEntity<>(null,
+//            responseHeaders,
+//            HttpStatus.CREATED);
+//    }
 
     /**
      * Given a complete User Object
