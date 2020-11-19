@@ -115,6 +115,7 @@ All the plants end points require a token to get access.
         "frequency": "Biweekly",
         "days": "Monday, Wednesday, Friday",
         "image": "image url goes here",
+        "description": "I am a test plant"
         "datePlanted": "11/17/2020",
         "careinstructions": "Place in sunlight",
         "user": "3",
