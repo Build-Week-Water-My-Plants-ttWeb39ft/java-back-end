@@ -98,7 +98,6 @@ public class PlantsController
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User currentUser = userService.findByName(authentication.getName());
-        System.out.println("101:" + currentUser);
         newPlant.setPlantid(0);
         //currentUser.getPlants().add(newPlant);
         newPlant.setUser(currentUser);
