@@ -1,5 +1,6 @@
 package com.lambdaschool.foundation.controllers;
 
+import com.lambdaschool.foundation.models.Plants;
 import com.lambdaschool.foundation.models.User;
 import com.lambdaschool.foundation.models.UserMinimum;
 import com.lambdaschool.foundation.models.UserRoles;
@@ -69,9 +70,13 @@ public class OpenController
         // Create the user
         User newuser = new User();
 
+        newuser.setUserid(0);
         newuser.setUsername(newminuser.getUsername());
         newuser.setPassword(newminuser.getPassword());
         newuser.setPrimaryemail(newminuser.getPrimaryemail());
+        newuser.setFirstName(newminuser.getFirstName());
+        newuser.setLastName(newminuser.getLastName());
+        newuser.setPhone(newminuser.getPhone());
 
         // add the default role of user
         Set<UserRoles> newRoles = new HashSet<>();

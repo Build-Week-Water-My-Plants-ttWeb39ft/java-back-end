@@ -112,7 +112,7 @@ public class User
 
     public User(@NotNull String username, @NotNull String password, @NotNull @Email String primaryemail, String firstName, String lastName, String phone) {
         this.username = username;
-        this.password = password;
+        this.setPassword(password);
         this.primaryemail = primaryemail;
         this.firstName = firstName;
         this.lastName = lastName;

@@ -97,7 +97,7 @@ public class UserServiceImpl
         newUser.setLastName(user.getLastName());
         newUser.setPrimaryemail(user.getPrimaryemail());
         newUser.setPhone(user.getPhone());
-        newUser.setPassword(user.getPassword());
+        newUser.setPasswordNoEncrypt(user.getPassword());
 
         newUser.getRoles()
                 .clear();
@@ -151,7 +151,7 @@ public class UserServiceImpl
 
         if (user.getPassword() != null)
         {
-            currentPlant.setPassword(user.getPassword());
+            currentPlant.setPasswordNoEncrypt(user.getPassword());
         }
 
         if (user.getPrimaryemail() != null)
