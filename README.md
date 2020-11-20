@@ -99,7 +99,7 @@ All the plants end points require a token to get access.
     User needs to be logged in
     
 
-* api/plants/plants (POST)
+* api/plants/plant (POST)
 
     add a new plant
 
