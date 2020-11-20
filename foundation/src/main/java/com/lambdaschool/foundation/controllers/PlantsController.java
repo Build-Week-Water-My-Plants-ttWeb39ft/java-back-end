@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -92,12 +93,15 @@ public class PlantsController
      * Adds a new plant to user
      */
     @PostMapping(value = "/plant", consumes = "application/json")
-    public ResponseEntity<?> addNewUserEmail(@Valid @RequestBody Plants newPlant, Authentication authentication)
+    public ResponseEntity<?> addNewPlant(@Valid @RequestBody Plants newPlant)
             throws URISyntaxException {
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User currentUser = userService.findByName(authentication.getName());
+        System.out.println("101:" + currentUser);
         newPlant.setPlantid(0);
-        currentUser.getPlants().add(newPlant);
+        //currentUser.getPlants().add(newPlant);
+        newPlant.setUser(currentUser);
         newPlant = plantsService.save(newPlant);
 
         // set the location header for the newly created resource
