@@ -77,7 +77,7 @@ public class Plants
      * A user can have many plants.
      */
     @ManyToOne
-    @NotNull
+    //@NotNull
     @JoinColumn(name = "userid")
     @JsonIgnoreProperties(value = "plants",
             allowSetters = true)
@@ -108,7 +108,7 @@ public class Plants
      * @param user The user to which the plants belong (User)
      */
 
-    public Plants(@NotNull String nickname, @NotNull String species, @NotNull String frequency, String days, String image, String description, String datePlanted, String careInstructions, @NotNull User user) {
+    public Plants(@NotNull String nickname, @NotNull String species, @NotNull String frequency, String days, String image, String description, String datePlanted, String careInstructions, User user) {
         this.nickname = nickname;
         this.species = species;
         this.frequency = frequency;
