@@ -114,7 +114,6 @@ All the plants end points require a token to get access.
         "description": "I am a test plant"
         "datePlanted": "2020/11/17",
         "careinstructions": "Place in sunlight",
-        "user": "3",
         }
     ```
     nickname, species, frequency, and user are **required**
